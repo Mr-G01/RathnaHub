@@ -1,0 +1,225 @@
+/* =========================================================
+   RathnaHub – style.css
+   1. Tokens   2. Base   3. Header/Hero   4. Browser
+   5. Cards    6. Dialog (gem sheet)     7. Footer   8. Motion
+   ========================================================= */
+
+/* ---------- 1. TOKENS ---------- */
+:root {
+  --paper: #f3f7f5;
+  --card: #ffffff;
+  --ink: #15302b;
+  --muted: #587069;
+  --line: #d3deda;
+
+  --emerald: #0d5a46;       /* echoes the green title band in the book */
+  --emerald-deep: #093f32;
+  --sapphire: #2c5e8c;      /* focus + interactive accents */
+
+  --font-body: "Manrope", "Noto Sans Sinhala", system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque", "Noto Sans Sinhala", system-ui, sans-serif;
+
+  --step--1: 0.875rem;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 1.6rem;
+  --step-3: clamp(2rem, 4.5vw, 3.1rem);
+
+  --r-card: 14px;
+  --r-sheet: 18px;
+  --r-input: 12px;
+}
+
+/* ---------- 2. BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.15; margin: 0; }
+p { margin: 0; }
+ul { list-style: none; margin: 0; padding: 0; }
+button, input { font: inherit; color: inherit; }
+svg { display: block; }
+
+:focus-visible { outline: 3px solid var(--sapphire); outline-offset: 2px; }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+.skip-link {
+  position: absolute; left: 12px; top: -60px; z-index: 50;
+  background: #fff; color: var(--ink); padding: 8px 14px; border-radius: 8px;
+}
+.skip-link:focus { top: 12px; }
+
+/* Language switching: data-lang on <body> = en | si | both */
+body[data-lang="en"] .si-only { display: none; }
+body[data-lang="si"] .en-only { display: none; }
+/* In Sinhala-only mode the Sinhala name becomes the primary title */
+body[data-lang="si"] .card-si { color: var(--ink); font-family: var(--font-display); font-weight: 700; font-size: var(--step-1); }
+body[data-lang="si"] .sheet-si { font-family: var(--font-display); font-weight: 700; font-size: var(--step-2); opacity: 1; }
+body[data-lang="si"] .prop dt .si-label { color: var(--ink); font-weight: 700; font-size: var(--step-0); }
+body[data-lang="si"] .prop dd .si-val { color: var(--ink); font-size: var(--step-0); }
+
+/* ---------- 3. HEADER + HERO ---------- */
+.top { background: var(--emerald-deep); color: #eaf5f0; }
+
+.site-header {
+  max-width: 1120px; margin: 0 auto; padding: 16px 20px;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+}
+.brand { display: flex; align-items: center; gap: 10px; color: inherit; text-decoration: none; }
+.brand-gem { width: 30px; }
+.brand-name { font-family: var(--font-display); font-weight: 700; font-size: var(--step-1); }
+.brand-si { opacity: 0.75; font-size: var(--step--1); }
+
+.lang { display: flex; background: rgba(255,255,255,0.1); border-radius: 999px; padding: 3px; }
+.lang-btn {
+  border: 0; background: transparent; cursor: pointer;
+  padding: 6px 14px; border-radius: 999px; font-size: var(--step--1); color: #d6e9e1;
+}
+.lang-btn[aria-pressed="true"] { background: #fff; color: var(--emerald-deep); font-weight: 700; }
+
+.hero {
+  max-width: 1120px; margin: 0 auto; padding: 28px 20px 56px;
+  display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 32px;
+}
+.hero h1 { font-size: var(--step-3); font-weight: 700; margin-bottom: 14px; }
+.hero-sub { max-width: 52ch; color: #cfe3da; }
+.hero-sub strong { color: #fff; }
+.hero-sub.si { margin-top: 4px; font-size: var(--step--1); opacity: 0.85; }
+
+.search {
+  margin-top: 26px; max-width: 560px; display: flex; align-items: center; gap: 10px;
+  background: #fff; color: var(--ink); border-radius: var(--r-input); padding: 0 16px;
+}
+.search svg { width: 20px; height: 20px; flex: none; fill: none; stroke: var(--muted); stroke-width: 2; stroke-linecap: round; }
+.search input { flex: 1; border: 0; background: transparent; padding: 15px 0; min-width: 0; }
+.search input:focus-visible { outline: none; }
+.search:focus-within { outline: 3px solid #8fc5ff; outline-offset: 2px; }
+
+/* The one memorable element: a large faceted gem */
+.hero-gem { width: clamp(150px, 24vw, 280px); filter: drop-shadow(0 18px 30px rgba(0,0,0,0.35)); }
+.gem-svg { width: 100%; height: auto; }
+
+/* ---------- 4. BROWSER ---------- */
+.browser { max-width: 1120px; margin: 0 auto; padding: 28px 20px 56px; }
+
+.toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px; margin-bottom: 22px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  border: 1px solid var(--line); background: var(--card); cursor: pointer;
+  padding: 7px 15px; border-radius: 999px; font-size: var(--step--1);
+}
+.chip:hover { border-color: var(--emerald); }
+.chip[aria-pressed="true"] { background: var(--emerald); border-color: var(--emerald); color: #fff; }
+.count { color: var(--muted); font-size: var(--step--1); }
+
+.btn {
+  border: 1px solid var(--emerald); background: var(--emerald); color: #fff; cursor: pointer;
+  padding: 10px 18px; border-radius: var(--r-input); font-weight: 700;
+}
+.btn.ghost { background: transparent; color: var(--emerald); }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.empty { text-align: center; padding: 56px 16px; color: var(--muted); }
+.empty .btn { margin-top: 16px; }
+
+/* ---------- 5. CARDS ---------- */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; }
+
+.card {
+  width: 100%; height: 100%; text-align: left; cursor: pointer; padding: 0;
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--r-card);
+  overflow: hidden; display: flex; flex-direction: column;
+  transition: border-color 0.15s, transform 0.15s;
+}
+.card:hover { border-color: var(--gem); transform: translateY(-2px); }
+
+.card-visual {
+  position: relative; padding: 26px 0 18px; display: grid; place-items: center;
+  background: color-mix(in srgb, var(--gem) 13%, #fff);
+}
+.card-visual .gem-svg { width: 76px; }
+.card-no {
+  position: absolute; left: 12px; top: 10px;
+  font-family: var(--font-display); font-weight: 700; font-size: var(--step--1);
+  color: color-mix(in srgb, var(--gem) 70%, #000);
+}
+
+.card-body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 2px; flex: 1; }
+.card-body h3 { font-size: var(--step-1); }
+.card-si { color: var(--muted); font-size: var(--step--1); }
+.card-group { margin-top: 8px; font-size: var(--step--1); color: var(--muted); }
+
+.card-meta { margin: auto 0 0; padding-top: 12px; display: flex; gap: 22px; }
+.card-meta div { display: flex; flex-direction: column; }
+.card-meta dt { font-size: 0.75rem; color: var(--muted); }
+.card-meta dd { margin: 0; font-weight: 700; }
+
+/* ---------- 6. DIALOG (gem sheet) ---------- */
+dialog {
+  width: min(780px, calc(100% - 24px)); max-height: 92vh; padding: 0;
+  border: 0; border-radius: var(--r-sheet); background: var(--card); color: var(--ink);
+  overflow: hidden;
+}
+dialog::backdrop { background: rgba(9, 40, 33, 0.6); }
+dialog[open] { display: flex; }
+.sheet { display: flex; flex-direction: column; width: 100%; min-height: 0; }
+
+.sheet-head {
+  display: flex; align-items: center; gap: 18px; padding: 18px 20px;
+  background: var(--emerald); color: #fff;
+}
+.sheet-visual { width: 62px; flex: none; }
+.sheet-titles { flex: 1; min-width: 0; }
+.sheet-no { font-size: var(--step--1); opacity: 0.8; }
+.sheet-head h2 { font-size: var(--step-2); }
+.sheet-si { opacity: 0.9; }
+
+.icon-btn {
+  width: 40px; height: 40px; border: 0; border-radius: 50%; cursor: pointer;
+  background: rgba(255,255,255,0.15); display: grid; place-items: center; flex: none;
+}
+.icon-btn:hover { background: rgba(255,255,255,0.28); }
+.icon-btn svg { width: 20px; height: 20px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; }
+.icon-btn:focus-visible { outline-color: #fff; }
+
+.sheet-body { overflow-y: auto; padding: 6px 20px 8px; }
+.props { margin: 0; }
+.prop {
+  display: grid; grid-template-columns: minmax(150px, 36%) 1fr; gap: 6px 18px;
+  padding: 11px 0; border-bottom: 1px solid var(--line);
+}
+.prop:last-child { border-bottom: 0; }
+.prop dt { font-weight: 700; }
+.prop dt .si-label { display: block; font-weight: 400; color: var(--muted); font-size: var(--step--1); }
+.prop dd { margin: 0; overflow-wrap: anywhere; }
+.prop dd .si-val { display: block; color: var(--muted); font-size: var(--step--1); }
+.prop dd.blank { color: #9aaaa5; }
+
+.sheet-foot { display: flex; justify-content: space-between; gap: 12px; padding: 12px 20px; border-top: 1px solid var(--line); }
+
+@media (max-width: 560px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-gem { display: none; }
+  .brand-si { display: none; }
+  .prop { grid-template-columns: 1fr; gap: 2px; }
+}
+
+/* ---------- 7. FOOTER ---------- */
+.site-footer { text-align: center; padding: 28px 20px 40px; color: var(--muted); font-size: var(--step--1); border-top: 1px solid var(--line); }
+
+/* ---------- 8. MOTION ---------- */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
