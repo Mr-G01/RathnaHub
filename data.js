@@ -1472,7 +1472,7 @@ const GEMS = [
       "year": "1956[cite: 100]"
     }
   },
-{
+  {
     "id": "jadeite-jade",
     "no": 49,
     "swatch": "#00A86B",
