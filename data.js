@@ -892,7 +892,7 @@ const GEMS = [
       year: "1800"
     }
   },
-{
+  {
     "id": "dumortierite",
     "no": 30,
     "swatch": "#A52A2A",
@@ -1762,7 +1762,6 @@ const GEMS = [
       "year": "1800[cite: 191]"
     }
   },
-  [
   {
     "id": "metamict-allanite",
     "no": 59,
@@ -2053,6 +2052,5 @@ const GEMS = [
       "year": "1755 ඔලිවින් මැණිකට භාවිතා කරන ලද නම පෙරිඩෝ ය.[cite: 10]"
     }
   }
-]
 ];
 
