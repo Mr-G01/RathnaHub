@@ -1762,10 +1762,10 @@ const GEMS = [
       "year": "1800[cite: 191]"
     }
   },
-  {
+{
     "id": "metamict-allanite",
     "no": 59,
-    "swatch": "",
+    "swatch": "#3B2F2F",
     "name": { "en": "Metamict Allanite[cite: 1]", "si": "මෙටාමික්ට් ඇලනයිට්[cite: 1]" },
     "group": "එපිඩෝ[cite: 1]",
     "fields": {
@@ -1794,7 +1794,7 @@ const GEMS = [
   {
     "id": "microcline-feldsper",
     "no": 60,
-    "swatch": "",
+    "swatch": "#50C878",
     "name": { "en": "Microcline Feldsper[cite: 2]", "si": "මයික්‍රොක්ලයින් ෆෙල්ස්පාර්[cite: 2]" },
     "group": "ෆෙල්ස්පාර්[cite: 2]",
     "fields": {
@@ -1823,7 +1823,7 @@ const GEMS = [
   {
     "id": "microlite",
     "no": 61,
-    "swatch": "",
+    "swatch": "#FF8C00",
     "name": { "en": "Microlite[cite: 3]", "si": "මයික්‍රොලයිට්[cite: 3]" },
     "group": "Pyrochlore[cite: 3]",
     "fields": {
@@ -1852,7 +1852,7 @@ const GEMS = [
   {
     "id": "monazite",
     "no": 62,
-    "swatch": "",
+    "swatch": "#8B4513",
     "name": { "en": "Monazite[cite: 4]", "si": "මොනසයිට්[cite: 4]" },
     "group": "මොනසයිට්[cite: 4]",
     "fields": {
@@ -1881,7 +1881,7 @@ const GEMS = [
   {
     "id": "montidorite",
     "no": 63,
-    "swatch": "",
+    "swatch": "#2A2A2A",
     "name": { "en": "Montidorite[cite: 5]", "si": "මොන්ට්‍රිඩෝරයිට්[cite: 5]" },
     "group": "මයිකා ගණය[cite: 5]",
     "fields": {
@@ -1910,7 +1910,7 @@ const GEMS = [
   {
     "id": "musgravite",
     "no": 64,
-    "swatch": "",
+    "swatch": "#301934",
     "name": { "en": "Musgravite[cite: 6]", "si": "මස්ග්‍රේවයිට්[cite: 6]" },
     "group": "Spinel group[cite: 6]",
     "fields": {
@@ -1939,7 +1939,7 @@ const GEMS = [
   {
     "id": "opal",
     "no": 65,
-    "swatch": "",
+    "swatch": "#FDF5E6",
     "name": { "en": "Opal[cite: 7]", "si": "ඕපල්[cite: 7]" },
     "group": "",
     "fields": {
@@ -1968,7 +1968,7 @@ const GEMS = [
   {
     "id": "orthoclase-feldspar",
     "no": 66,
-    "swatch": "",
+    "swatch": "#B0C4DE",
     "name": { "en": "Orthoclase Feldspar[cite: 8]", "si": "ඕතෝක්ලේස් ෆෙල්ස්පාර්[cite: 8]" },
     "group": "ෆෙල්ස්පාර්[cite: 8]",
     "fields": {
@@ -1997,7 +1997,7 @@ const GEMS = [
   {
     "id": "painite",
     "no": 67,
-    "swatch": "",
+    "swatch": "#8B0000",
     "name": { "en": "Painite[cite: 9]", "si": "පේනයිට්[cite: 9]" },
     "group": "",
     "fields": {
@@ -2026,7 +2026,7 @@ const GEMS = [
   {
     "id": "peridot",
     "no": 68,
-    "swatch": "",
+    "swatch": "#9ACD32",
     "name": { "en": "Peridot[cite: 10]", "si": "පෙරිඩෝ[cite: 10]" },
     "group": "ඔලිවින් Olivine[cite: 10]",
     "fields": {
