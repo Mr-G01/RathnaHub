@@ -61,8 +61,12 @@
     </svg>`;
 
   /* Chemical formulas: 2 -> subscript. Result is built from our own data. */
-  const formulaHTML = (text) =>
-    text.replace(/[<>&]/g, "").replace(/(\d+)/g, "<sub>$1</sub>");
+  const formulaHTML = (text) => {
+    const safe = String(text ?? "")
+      .replace(/[<>&]/g, "")
+      .replace(/(\d+)/g, "<sub>$1</sub>");
+    return safe;
+  };
 
   /* ---------- filtering ---------- */
   const haystack = (gem) => {
@@ -81,6 +85,14 @@
       (state.group === "All" || g.group === state.group) &&
       (!q || haystack(g).includes(q))
     );
+  };
+
+  const syncGemGroups = () => {
+    GEMS.forEach((gem) => {
+      if (!gem || !gem.fields) return;
+      gem.group = gem.group || gem.fields.group || "Unknown";
+      gem.fields.group = gem.group;
+    });
   };
 
   /* ---------- render: chips ---------- */
@@ -179,8 +191,9 @@
     // prev / next among the currently visible list
     const list = visibleGems();
     const i = list.findIndex((g) => g.id === gem.id);
-    el.prev.disabled = i <= 0;
-    el.next.disabled = i === -1 || i >= list.length - 1;
+    const empty = list.length === 0;
+    el.prev.disabled = empty || i <= 0;
+    el.next.disabled = empty || i === -1 || i >= list.length - 1;
     $(".sheet-body", el.dialog).scrollTop = 0;
   };
 
@@ -194,7 +207,9 @@
 
   const step = (dir) => {
     const list = visibleGems();
+    if (!list.length || state.openId == null) return;
     const i = list.findIndex((g) => g.id === state.openId);
+    if (i === -1) return;
     const target = list[i + dir];
     if (target) openGem(target.id);
   };
@@ -271,6 +286,7 @@
     setLang(["en", "si", "both"].includes(saved) ? saved : "both");
 
     GEMS.sort((a, b) => a.no - b.no);
+    syncGemGroups();
     renderChips();
     renderGrid();
   };
