@@ -61,6 +61,31 @@ svg { display: block; }
 }
 .skip-link:focus { top: 12px; }
 
+.page-loader {
+  position: fixed; inset: 0; z-index: 100;
+  display: grid; place-content: center; justify-items: center; gap: 16px;
+  background: var(--emerald-deep); color: #eaf5f0;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+.page-loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.loader-diamond {
+  width: 112px; height: 104px; overflow: visible;
+  filter: drop-shadow(0 0 12px rgba(127,214,176,0.25));
+  transform-style: preserve-3d;
+  animation: diamond-rotate 3.2s linear infinite;
+}
+.diamond-edges {
+  fill: none; stroke: #7fd6b0; stroke-width: 1.5;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.diamond-nodes { fill: #eaf5f0; }
+.diamond-nodes circle:nth-child(3n) { fill: #7fd6b0; }
+@keyframes diamond-rotate {
+  from { transform: perspective(360px) rotateY(0deg) rotateZ(0deg); }
+  to { transform: perspective(360px) rotateY(360deg) rotateZ(360deg); }
+}
+.loader-text { font-size: var(--step--1); font-weight: 700; }
+
 /* Language switching: data-lang on <body> = en | si | both */
 body[data-lang="en"] .si-only { display: none; }
 body[data-lang="si"] .en-only { display: none; }

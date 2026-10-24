@@ -276,6 +276,8 @@
 
   /* ---------- init ---------- */
   const init = () => {
+    const loader = $("#pageLoader");
+    const loaderStartedAt = performance.now();
     $("#brandGem").innerHTML = gemSVG("#7fd6b0");
     $("#heroGem").innerHTML = gemSVG("#5fc9a0");
     $("#year").textContent = new Date().getFullYear();
@@ -289,6 +291,14 @@
     syncGemGroups();
     renderChips();
     renderGrid();
+
+    window.addEventListener("load", () => {
+      const remainingTime = Math.max(0, 1000 - (performance.now() - loaderStartedAt));
+      window.setTimeout(() => {
+        loader.classList.add("is-hidden");
+        loader.setAttribute("aria-hidden", "true");
+      }, remainingTime);
+    }, { once: true });
   };
 
   init();
