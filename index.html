@@ -37,22 +37,28 @@
   <a class="skip-link" href="#gems">Skip to gems</a>
 
   <!-- ============ HEADER + HERO ============ -->
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="RathnaHub home">
+      <span class="brand-gem" id="brandGem"></span>
+      <span class="brand-name">RathnaHub</span>
+      <span class="brand-si">රත්න හබ්</span>
+    </a>
+
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="nav-link" href="#home">Home</a>
+      <a class="nav-link" href="#gems">Explore gems</a>
+      <a class="nav-link" href="#about">About</a>
+    </nav>
+
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+      <button type="button" class="lang-btn" data-lang="si" aria-pressed="false">සිං</button>
+      <button type="button" class="lang-btn" data-lang="both" aria-pressed="true">EN + සිං</button>
+    </div>
+  </header>
+
   <div class="top">
-    <header class="site-header">
-      <a class="brand" href="./" aria-label="RathnaHub home">
-        <span class="brand-gem" id="brandGem"></span>
-        <span class="brand-name">RathnaHub</span>
-        <span class="brand-si">රත්න හබ්</span>
-      </a>
-
-      <div class="lang" role="group" aria-label="Language">
-        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
-        <button type="button" class="lang-btn" data-lang="si" aria-pressed="false">සිං</button>
-        <button type="button" class="lang-btn" data-lang="both" aria-pressed="true">EN + සිං</button>
-      </div>
-    </header>
-
-    <section class="hero">
+    <section class="hero" id="home">
       <div class="hero-text">
         <h1>Every gem, one reference.</h1>
         <p class="hero-sub">Formula, hardness, refractive index, localities and more for <strong id="totalCount">0</strong> gems, in English and Sinhala.</p>
@@ -110,7 +116,7 @@
     </article>
   </dialog>
 
-  <footer class="site-footer">
+  <footer class="site-footer" id="about">
     <p>Gem reference guide for English and Sinhala.</p>
     <p class="si">RathnaHub &copy; <span id="year"></span></p>
   </footer>
